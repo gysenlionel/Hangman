@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" rel="stylesheet">
+    <title>Hangman - pirate</title>
+</head>
+
+<body>
+    <div id="bloc_page">
+
+
+        <div class="homepage">
+            <div class="homepage__squel">
+                <img src="./images/squelette.gif" alt="squelette" class="homepage__squelette">
+            </div>
+            <div class="homepage__bouton">
+                <button class="btn --start" id="start-btn">Start game</button>
+            </div>
+        </div>
+
+
+        <header class="header">
+            <div class="header__img">
+                <img src="./images/skull.png" alt="skull">
+                <div class="header__redeye"></div>
+            </div>
+            <div class="header__title">
+                <h1>Pir<span class="letter--title">a</span>te - H<span class="letter--title">a</span>ngm<span
+                        class="letter--title">a</span>n </h1>
+            </div>
+            <div class="header__img2">
+                <img src="./images/pirates.png">
+            </div>
+        </header>
+
+
+        <main>
+
+            <div class="game">
+                <img src="./images/boat1.png" alt="boat" class="game__boat">
+                <img src="./images/santa.png" alt="santa" class="game__santa" id="santa">
+                <img src="./images/pirate.png" alt="pirat" class="game__pirat" id="badpirate">
+                <img src="./images/splash.png" alt="spash" class="game__splash" id="splash">
+            </div>
+
+            <div id="response"></div>
+
+            <div id="keyboard">
+
+                <div id="keyboard1"></div>
+                <div id="keyboard2"></div>
+                <div id="keyboard3"></div>
+            </div>
+
+
+            <div class="retry">
+                <button class="btn --retry">retry</button>
+            </div>
+
+
+            <footer>
+                <p>
+                    &copy; 2021 Gysen lionel
+                </p>
+                <a href="https://github.com/gysenlionel"><i class="fab fa-github"></i></a>
+            </footer>
+    </div>
+    <script type="module" src="./scripts/index.js"></script>
+</body>
+
+</html>

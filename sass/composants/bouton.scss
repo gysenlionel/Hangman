@@ -1,0 +1,23 @@
+.btn{
+    width: 5%;
+    height: 40px;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    background: linear-gradient( $grey-bouton, rgb(207, 202, 202));
+    border-radius: 7px / 8px;
+    text-shadow: 0px 1px 1px white;
+    font-size: 0.8em;
+}
+
+.btn:hover{
+    background: linear-gradient(rgba(117, 113, 113, 0.897) , rgb(207, 202, 202)); 
+}
+
+.--retry{
+    width: 8%;
+}
+
+.--start{
+    width: 120px;
+    
+}

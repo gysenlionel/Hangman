@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Sacramento&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.2em;
+  color: black;
+  background-color: #E1F4F3;
+}
+
+#bloc_page {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 21vh;
+  border: #99DDCC 4px solid;
+  border-radius: 7px/9px;
+  background-color: #333333;
+  position: relative;
+}
+.header__img {
+  position: relative;
+}
+.header__img img {
+  width: 80%;
+  height: 80%;
+  filter: invert(100%);
+}
+.header__title {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Gloria Hallelujah", cursive;
+  font-size: 1.4em;
+  color: #f7f3f3;
+  text-shadow: 0px 10px 2px black;
+  font-size: 1.4em;
+}
+.header__img2 img {
+  width: 80%;
+  height: 80%;
+}
+.header__redeye {
+  border: 2px red solid;
+  border-radius: 50%;
+  position: absolute;
+  left: 1.9%;
+  top: 57%;
+  left: 25%;
+}
+
+.letter--title {
+  color: #FF0000;
+}
+
+.homepage {
+  width: 100%;
+  height: 143%;
+  position: absolute;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.938);
+}
+.homepage__squelette {
+  width: 40%;
+  height: 60%;
+}
+.homepage__squel {
+  width: 100%;
+  text-align: center;
+}
+.homepage__bouton {
+  width: 100%;
+  margin-left: 41%;
+}
+
+main {
+  width: 100%;
+}
+
+.game {
+  width: 90%;
+  height: 350px;
+  padding-top: 2%;
+  padding-left: 2%;
+  margin-top: 8%;
+}
+.game__boat {
+  width: 70%;
+  height: 60%;
+  position: relative;
+}
+.game__santa {
+  width: 10%;
+  height: 20%;
+  position: relative;
+  right: 36%;
+  bottom: 13%;
+}
+.game__pirat {
+  position: relative;
+  height: 25%;
+  width: 10%;
+  right: 52%;
+  bottom: 14%;
+}
+.game__splash {
+  width: 10%;
+  height: 10%;
+  position: relative;
+  left: 63%;
+  top: 25%;
+  display: none;
+}
+
+#response {
+  text-align: center;
+  margin-bottom: 1%;
+}
+
+#keyboard {
+  text-align: center;
+}
+
+.retry {
+  text-align: center;
+}
+
+.btn {
+  width: 5%;
+  height: 40px;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  background: linear-gradient(#706C61, #cfcaca);
+  border-radius: 7px/8px;
+  text-shadow: 0px 1px 1px white;
+  font-size: 0.8em;
+}
+
+.btn:hover {
+  background: linear-gradient(rgba(117, 113, 113, 0.897), #cfcaca);
+}
+
+.--retry {
+  width: 8%;
+}
+
+.--start {
+  width: 120px;
+}
+
+footer {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #333333;
+  color: #f7f3f3;
+  border-top: #99DDCC 3px solid;
+}
+footer p {
+  text-shadow: 0px 1px 1px black;
+  padding-bottom: 1%;
+}
+footer a {
+  font-size: 1.7em;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  color: whitesmoke;
+}
+footer a :hover {
+  -webkit-transform: scale(1.4);
+  transform: scale(1.4);
+  color: #FF0000;
+}
+
+/*# sourceMappingURL=style.css.map */

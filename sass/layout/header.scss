@@ -1,0 +1,46 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 21vh;
+    border: $blue-white 4px solid;
+    // border-top: $red-title 4px solid;
+    border-radius: 7px / 9px;
+    background-color: $black-header;
+    position: relative;
+
+    &__img {
+        
+        position: relative;
+    }
+    &__img img{
+        width: 80%;
+        height: 80%;
+        filter: invert(100%);
+    }
+
+    &__title{
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        @include typo-title($size-title);
+        color: $white-header;
+        text-shadow: 0px 10px 2px black;
+        font-size: 1.4em;
+    }
+
+    &__img2 img{
+        width: 80%;
+        height: 80%;
+    
+    }
+
+    &__redeye{
+        @include eyes;
+        left: 1.9%;
+        top: 57%;
+        left: 25%;
+    }
+}
+
+.letter--title{
+    color: #FF0000;
+}
