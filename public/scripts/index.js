@@ -216,7 +216,7 @@ async function startGame() {
         answerArray[x] = "_";
     }
 
-    // probleme de boucle
+
     for (i = 0; i < keyboardFull.length; i++) {
 
         keyboardFull[i].addEventListener('click', (lettre) => {
