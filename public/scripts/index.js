@@ -37,7 +37,7 @@ for (let key of keys3) {
 }
 
 // ------------------ variables -------------------------
-var guess;
+var word;
 var check;
 var answerArray = [];
 var wrongLetters = 0;
@@ -47,12 +47,19 @@ var positionRight = 36;
 var positionBottom = 13;
 var postionPirRight = 52;
 var positionPirBottom = 14;
-var deathPositionRight = 7.3;
-var deathPositionBottom = 1.8;
-var animDeathSanta;
+var deathPositionRight;
+var deathPositionBottom;
+
+
+var response = document.querySelector('#response');
 var splash = document.querySelector('#splash');
 var santa = document.querySelector('#santa');
 var badPirate = document.querySelector('#badpirate');
+var infoWindow = document.querySelector('.info');
+var textWinLose = document.querySelector('#text_win_loose');
+var btnOk = document.querySelector('#btn_ok');
+var retry = document.querySelector('#retry');
+
 var lettreA = document.querySelector('#lettreA');
 var lettreB = document.querySelector('#lettreB')
 var lettreC = document.querySelector('#lettreC');
@@ -125,72 +132,23 @@ async function fetchWords(endpoint) {
 
 // ------------------ function --------------------
 
-
-function transformLetter(letter) {
-    check = letter.textContent.toLowerCase();
-    guess = check;
-}
-
-function checkLetters(word, guess) {
-    if (count < word.length) {
-
-        for (var j = 0; j < word.length; j++) {
-            if (word[j] === guess) {
-                answerArray[j] = guess;
-                response.innerHTML = answerArray.join(' ');
-                count++;
-
-            }
-            if (count === word.length) {
-                console.log("win")
-                for (i = 0; i < keyboardFull.length; i++) {
-                    keyboardFull[i].disabled = true;
-                }
-            }
-        }
-    }
-
-    var j = (word.indexOf(guess));
-    if (j === -1) {
-        wrongLetters++;
-        moveSanta();
-        movePirate();
-    }
-
-}
-
 function lostGame() {
-    if (wrongLetters > 5) {
-        console.log('perdu')
+    if (wrongLetters > 6) {
         for (i = 0; i < keyboardFull.length; i++) {
             keyboardFull[i].disabled = true;
         }
-        animDeathSanta = setInterval(deathSanta, 50);
-        setTimeout(() => {
-            clearInterval(animDeathSanta)
-            santa.style.opacity = "0";
-            splash.style.display = 'initial';
 
-        }, 1000)
+        setTimeout(() => {
+            infoLose();
+            infoDisappear();
+        }, 1800);
+
+        showWord(word)
     }
 }
 
 function disabledLetter(lettre) {
     lettre.disabled = true;
-}
-
-function moveSanta() {
-    positionRight = positionRight - 4.1;
-    santa.style.right = positionRight + '%';
-    positionBottom = positionBottom - 1.6;
-    santa.style.bottom = positionBottom + '%';
-}
-
-function movePirate() {
-    postionPirRight = postionPirRight - 4;
-    badPirate.style.right = postionPirRight + '%';
-    positionPirBottom = positionPirBottom - 1.5;
-    badPirate.style.bottom = positionPirBottom + '%';
 }
 
 function deathSanta() {
@@ -201,39 +159,175 @@ function deathSanta() {
 
 }
 
-// ------------------ Game -------------------------
-var response = document.querySelector('#response');
+function infoWin() {
+    infoWindow.style.display = 'flex';
+    textWinLose.innerText = 'Well done you won!!!';
+}
 
-async function startGame() {
-    var word = await fetchWords(folder);
+function infoLose() {
+    infoWindow.style.display = 'flex';
+    textWinLose.innerText = 'To bad you lost!!!';
+}
 
-    // check word delette after
-    var letterCheck = word.split('');
-    console.log(letterCheck);
+function infoDisappear() {
+    btnOk.addEventListener('click', () => {
+        infoWindow.style.display = 'none';
+    })
+}
 
-    //  Create secret answer
+function showWord(word) {
+    for (var x = 0; x < word.length; x++) {
+        answerArray[x] = word[x];
+    }
+    response.innerHTML = answerArray.join(' ');
+}
+
+function activeKeyboards() {
+    for (i = 0; i < keyboardFull.length; i++) {
+        keyboardFull[i].disabled = false;
+    }
+}
+
+function resetVariables() {
+    word = null;
+    answerArray = [];
+    response.innerHTML = null;
+    wrongLetters = 0;
+    count = 0;
+
+}
+
+function CreateSecretWord(word) {
     for (var x = 0; x < word.length; x++) {
         answerArray[x] = "_";
     }
+}
+
+function resetSantaPirate() {
+    santa.style.right = 36 + '%';
+    santa.style.bottom = 13 + '%';
+    santa.style.opacity = "1";
+    badPirate.style.right = 52 + '%';
+    badPirate.style.bottom = 14 + '%';
+    splash.style.display = 'none';
+}
 
 
-    for (i = 0; i < keyboardFull.length; i++) {
+// ------------------ Game -------------------------
 
-        keyboardFull[i].addEventListener('click', (lettre) => {
 
-            check = lettre.target.innerHTML.toLowerCase();
-            guess = check;
-            lostGame();
-            checkLetters(word, guess);
-            disabledLetter(lettre.target);
-        })
-    }
+async function startGame() {
+    word = await fetchWords(folder);
 
+    CreateSecretWord(word);
 
     response.innerHTML = answerArray.join(' ');
-
-
 }
 
 startGame();
 
+retry.addEventListener('click', async (word) => {
+    animWhenWrongVar = setInterval(animWhenWrong, 50);
+    resetVariables();
+    activeKeyboards();
+    resetSantaPirate();
+    response.innerHTML = answerArray.join(' ');
+    startGame();
+})
+
+
+for (i = 0; i < keyboardFull.length; i++) {
+
+    keyboardFull[i].addEventListener('click', (lettre) => {
+        if (count === check || wrongLetters > 6) {
+            resetSantaPirate();
+        }
+        check = lettre.target.innerHTML.toLowerCase();
+
+        if (count < word.length) {
+
+            for (var t = 0; t < word.length; t++) {
+                if (word[t] === check) {
+                    answerArray[t] = check;
+                    response.innerHTML = answerArray.join(' ');
+                    count++;
+                }
+                if (count === word.length) {
+                    infoWin();
+                    infoDisappear();
+                    clearInterval(animWhenWrongVar);
+                    for (i = 0; i < keyboardFull.length; i++) {
+                        keyboardFull[i].disabled = true;
+                    }
+                }
+            }
+        }
+
+        var j = (word.indexOf(check));
+
+        if (j === -1) {
+            wrongLetters++;
+        }
+
+        lostGame(word);
+        disabledLetter(lettre.target);
+    })
+}
+
+function animWhenWrong() {
+    switch (wrongLetters) {
+        case 1:
+            santa.style.bottom = 11.4 + '%';
+            santa.style.right = 31.9 + '%';
+            badPirate.style.right = 48 + '%';
+            badPirate.style.bottom = 12.5 + '%';
+            break;
+        case 2:
+            santa.style.bottom = 9.8 + '%'; //-1.6
+            santa.style.right = 27.8 + '%'; //-4.1
+            badPirate.style.right = 44 + '%'; // -4
+            badPirate.style.bottom = 11 + '%'; //-1.5
+
+            break;
+        case 3:
+            santa.style.bottom = 8.2 + '%';
+            santa.style.right = 23.7 + '%';
+            badPirate.style.right = 40 + '%';
+            badPirate.style.bottom = 9.5 + '%';
+            break;
+        case 4:
+            santa.style.bottom = 6.6 + '%';
+            santa.style.right = 19.6 + '%';
+            badPirate.style.right = 36 + '%';
+            badPirate.style.bottom = 8 + '%';
+            break;
+        case 5:
+            santa.style.bottom = 5 + '%';
+            santa.style.right = 15.5 + '%';
+            badPirate.style.right = 32 + '%';
+            badPirate.style.bottom = 6.5 + '%';;
+            break;
+        case 6:
+            santa.style.bottom = 3.4 + '%';
+            santa.style.right = 11.4 + '%';
+            badPirate.style.right = 28 + '%';
+            badPirate.style.bottom = 5 + '%';
+            deathPositionRight = 7.3;
+            deathPositionBottom = 1.8;
+            break;
+        case 7:
+            clearInterval(animWhenWrongVar);
+            var animDeathSanta = setInterval(deathSanta, 50);
+            setTimeout(() => {
+                clearInterval(animDeathSanta);
+                santa.style.opacity = "0";
+                splash.style.display = 'initial';
+
+            }, 1000)
+            break;
+
+    }
+
+}
+
+var animWhenWrongVar = setInterval(animWhenWrong, 50);

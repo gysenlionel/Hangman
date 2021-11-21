@@ -14,7 +14,7 @@
     <div id="bloc_page">
 
 
-        <div class="homepage">
+        <div class="homepage" id="homepage">
             <div class="homepage__squel">
                 <img src="./images/squelette.gif" alt="squelette" class="homepage__squelette">
             </div>
@@ -59,16 +59,20 @@
 
 
             <div class="retry">
-                <button class="btn --retry">retry</button>
+                <button class="btn --retry" id="retry">retry</button>
             </div>
 
-
-            <footer>
-                <p>
-                    &copy; 2021 Gysen lionel
-                </p>
-                <a href="https://github.com/gysenlionel"><i class="fab fa-github"></i></a>
-            </footer>
+            <div class="info">
+                <div id="text_win_loose"></div>
+                <button class="btn --info" id="btn_ok">ok</button>
+            </div>
+        </main>
+        <footer>
+            <p>
+                &copy; 2021 Gysen lionel
+            </p>
+            <a href="https://github.com/gysenlionel"><i class="fab fa-github"></i></a>
+        </footer>
     </div>
     <script type="module" src="./scripts/index.js"></script>
 </body>

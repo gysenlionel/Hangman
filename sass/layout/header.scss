@@ -25,6 +25,14 @@
         color: $white-header;
         text-shadow: 0px 10px 2px black;
         font-size: 1.4em;
+        @include title-media{
+            font-size: 0.8em;
+        }
+        
+        // & h1{
+        //     width: 100%;
+            
+        // }
     }
 
     &__img2 img{
