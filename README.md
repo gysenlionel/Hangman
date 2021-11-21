@@ -10,12 +10,13 @@
 
 ## General Information
 - **General information** 
+
     Réalisation d'un jeu du pendu avec une base de donnée en express.js dans le cadre d'un exercices.
     Choisis un mot aléatoire dans la base de donnée. 
-    Au lieu d'utilisé l'animation original avec un personnage pendu, j'ai créer une petite animation avec un pirate qui chasse le père-noël en fonction des mauvaises réponses et qui tombe dans l'eau si le mot n'est pas trouvé.
+    Au lieu d'utilisé l'animation original avec un personnage pendu, j'ai créer une petite animation avec un pirate qui chasse le père-noël en fonction des mauvaises réponses et     qui tombe dans l'eau si le mot n'est pas trouvé.
     
 -  **Problem solve**
-    - Pouvoir relancé le jeu et que toute l'anim soit resset ainsi que l'ancien mot.
+    - Pouvoir relancé le jeu et que toute l'anim soit reset ainsi que l'ancien mot.
     - Réglage du probleme du fetch avec await en ajoutant un attribut dans le lien de   mon script dans le html(type='module').
 
 ## Technologies Used
