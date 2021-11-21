@@ -212,7 +212,6 @@ function resetSantaPirate() {
     splash.style.display = 'none';
 }
 
-
 // ------------------ Game -------------------------
 
 retry.disabled = true;
@@ -233,6 +232,7 @@ retry.addEventListener('click', async (word) => {
     activeKeyboards();
     resetSantaPirate();
     response.innerHTML = answerArray.join(' ');
+    retry.disabled = true;
     startGame();
 })
 
