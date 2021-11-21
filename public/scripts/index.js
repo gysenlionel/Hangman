@@ -215,6 +215,7 @@ function resetSantaPirate() {
 
 // ------------------ Game -------------------------
 
+retry.disabled = true;
 
 async function startGame() {
     word = await fetchWords(folder);
@@ -253,6 +254,7 @@ for (i = 0; i < keyboardFull.length; i++) {
                     count++;
                 }
                 if (count === word.length) {
+                    retry.disabled = false;
                     infoWin();
                     infoDisappear();
                     clearInterval(animWhenWrongVar);
@@ -316,6 +318,7 @@ function animWhenWrong() {
             deathPositionBottom = 1.8;
             break;
         case 7:
+            retry.disabled = false;
             clearInterval(animWhenWrongVar);
             var animDeathSanta = setInterval(deathSanta, 50);
             setTimeout(() => {
